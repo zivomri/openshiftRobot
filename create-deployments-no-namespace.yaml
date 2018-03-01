@@ -1,0 +1,70 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: football
+spec:
+  selector:
+    matchLabels:
+      app: football
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: football
+    spec:
+      containers:
+      - name: football-container
+        image: football:101
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+
+---
+
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: basketball
+spec:
+  selector:
+    matchLabels:
+      app: basketball
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: basketball
+    spec:
+      containers:
+      - name: basketball-container
+        image: basketball:103
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+
+
+---
+
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: tennis
+spec:
+  selector:
+    matchLabels:
+      app: tennis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tennis
+    spec:
+      containers:
+      - name: tennis-container
+        image: tennis:107
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          protocol: TCP
