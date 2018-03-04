@@ -23,3 +23,14 @@ spec:
   nodeSelector: {}
 status:
   lastVersion: 
+---
+kind: ImageStream
+apiVersion: v1
+metadata:
+  name: "reversi"
+  annotations:
+    openshift.io/image.insecureRepository: 'true'
+  creationTimestamp:
+spec:
+  dockerImageRepository: "172.30.245.78/robot-games-namespace-001/reversi"
+
