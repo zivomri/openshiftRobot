@@ -1,0 +1,64 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: "reversi"
+  namespace: "robot-games-namespace-001"
+  creationTimestamp:
+  labels:
+    app: "reversi"
+spec:
+  selector:
+    app: "reversi"
+  clusterIP: None
+  type: ClusterIP
+  sessionAffinity: None
+---
+kind: DeploymentConfig
+apiVersion: v1
+metadata:
+  name: reversi
+  namespace: robot-games-namespace-001
+  labels:
+    app: "reversi"
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 2400
+    resources: {}
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+        - "reversi"
+        from:
+          kind: ImageStreamTag
+          name: "reversi:latest"
+    - type: ConfigChange`
+  replicas: 1
+  selector:
+  template:
+    metadata:
+      creationTimestamp:
+      labels:
+        app: "reversi"
+      annotations:
+    spec:
+      containers:
+      - name: "reversi"
+        image: "cddirector/sampleapp:latest"
+        resources:
+          limits:
+            cpu: 120m
+            memory: 400Mi
+          requests:
+            cpu: 100m
+            memory: 400Mi
+        imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
