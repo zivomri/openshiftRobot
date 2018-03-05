@@ -2,7 +2,7 @@ kind: BuildConfig
 apiVersion: v1
 metadata:
   name: "reversi-bc"
-  namespace: "robot-games-namespace-001"
+  namespace: "robot-namespace-001"
 spec:
   triggers: []
   runPolicy: Serial
@@ -32,5 +32,5 @@ metadata:
     openshift.io/image.insecureRepository: 'true'
   creationTimestamp:
 spec:
-  dockerImageRepository: "172.30.245.78/robot-games-namespace-001/reversi"
+  dockerImageRepository: "172.30.245.78/robot-namespace-001/reversi"
 
