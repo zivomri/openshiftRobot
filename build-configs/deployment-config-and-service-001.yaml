@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: "reversi"
-  namespace: "robot-namespace-001"
+  namespace: "robot-build-config-001"
   creationTimestamp:
   labels:
     app: "reversi"
@@ -17,7 +17,7 @@ kind: DeploymentConfig
 apiVersion: v1
 metadata:
   name: reversi
-  namespace: robot-namespace-001
+  namespace: robot-build-config-001
   labels:
     app: "reversi"
 spec:
