@@ -1,0 +1,35 @@
+kind: BuildConfig
+apiVersion: v1
+metadata:
+  name: "reversi-bc"
+  namespace: "manual-build-config"
+spec:
+  triggers: []
+  runPolicy: Serial
+  source:
+    type: Dockerfile
+    dockerfile: FROM cddirector/sampleapp
+  strategy:
+    type: Docker
+    dockerStrategy:
+      noCache: true
+      forcePull: true
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "reversi:latest"
+  resources: {}
+  postCommit: {}
+  nodeSelector: {}
+status:
+  lastVersion: 
+---
+kind: ImageStream
+apiVersion: v1
+metadata:
+  name: "reversi"
+  annotations:
+    openshift.io/image.insecureRepository: 'true'
+  creationTimestamp:
+spec:
+  dockerImageRepository: "172.30.245.78/manual-build-config/reversi"
