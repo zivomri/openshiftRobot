@@ -17,7 +17,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: "reversi:latest"
+      name: "ImageStream_reversi:latest"
   resources: {}
   postCommit: {}
   nodeSelector: {}
