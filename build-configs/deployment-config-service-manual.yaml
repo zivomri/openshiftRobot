@@ -36,7 +36,7 @@ spec:
         - "reversi"
         from:
           kind: ImageStreamTag
-          name: "ImageStream_reversi:latest"
+          name: "reversi:latest"
     - type: ConfigChange`
   replicas: 1
   selector:
