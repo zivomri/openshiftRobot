@@ -27,7 +27,7 @@ status:
 kind: ImageStream
 apiVersion: v1
 metadata:
-  name: "reversi"
+  name: "ImageStream_reversi"
   annotations:
     openshift.io/image.insecureRepository: 'true'
   creationTimestamp:
